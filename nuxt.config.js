@@ -44,7 +44,7 @@ module.exports = {
         '@nuxtjs/auth'
     ],
     axios: {
-        baseURL: 'http://laravel-auth/api'
+        baseURL: 'https://nuxt-app-db.herokuapp.com/api'
     },
 	router: {
     	middleware: [
