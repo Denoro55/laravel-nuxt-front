@@ -7,8 +7,8 @@ export default function({$axios, store}) {
 	});
 
 	$axios.onRequest((config ) => {
-		config.headers.common['Content-Type'] = 'text/plain;charset=utf-8';
-		config.headers.common['Access-Control-Allow-Origin'] = '*';
+		// config.headers.common['Content-Type'] = 'text/plain;charset=utf-8';
+		// config.headers.common['Access-Control-Allow-Origin'] = '*';
 		store.dispatch('validation/clearErrors');
 	})
 }
