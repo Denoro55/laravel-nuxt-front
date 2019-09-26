@@ -57,13 +57,13 @@ module.exports = {
 			local: {
 				endpoints: {
 					login: {
-						url: 'http://laravel-auth/api/auth/login', method: "post", propertyName: 'token'
+						url: 'https://nuxt-app-db.herokuapp.com/api/auth/login', method: "post", propertyName: 'token'
 					},
 					user: {
-						url: 'http://laravel-auth/api/me', method: "get", propertyName: 'data'
+						url: 'https://nuxt-app-db.herokuapp.com/api/me', method: "get", propertyName: 'data'
 					},
 					logout: {
-						url: 'http://laravel-auth/api/auth/logout', method: "get"
+						url: 'https://nuxt-app-db.herokuapp.com/api/auth/logout', method: "get"
 					}
 				}
 			}
