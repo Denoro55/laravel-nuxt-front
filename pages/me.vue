@@ -132,11 +132,7 @@
 			const options = {
 				user_id: store.state.auth.user.id
 			};
-			return $axios.post('articles', options, {
-				headers: {
-					'Access-Control-Allow-Origin': '*'
-				}
-			})
+			return $axios.post('articles', options)
 				.then((res) => {
 					let data = res.data;
 					data.forEach(function(e){
