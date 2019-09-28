@@ -156,7 +156,9 @@
 <script>
 	import {mapMutations, mapState} from 'vuex';
 	export default {
+		middleware: 'auth',
 		async asyncData({ route, $axios, store }) {
+			console.log(store)
 			const options = {
 				user_id: store.state.auth.user.id,
 				companion_id: route.query.user
@@ -171,7 +173,6 @@
 				}
 			}
 			const messages = await $axios.$post('message/getMessages', options);
-			console.log(messages)
 			return {
 				mode: false,
 				messages: messages,
@@ -192,6 +193,27 @@
 		computed: mapState(['privateMessages']),
 		methods: {
 			...mapMutations(['updatePrivateMessages']),
+			async getMessages(queryUser) {
+				console.log('query user: ', queryUser);
+				const options = {
+					user_id: this.$store.state.auth.user.id
+				};
+				const messages = await this.$axios.$post('message/getMessages', options);
+				this.messages = messages;
+				this.companionMessages = [];
+			},
+			async getUserMessages(queryUser) {
+				this.updatePrivateMessages([]);
+				const options = {
+					user_id: this.$store.state.auth.user.id,
+					companion_id: queryUser
+				};
+				const messages = await this.$axios.$post('message/getUserMessages', options);
+				this.mode = true;
+				this.companionID = queryUser;
+				this.messages = [];
+				this.updatePrivateMessages(messages);
+			},
 			async sendMessage() {
 				const options = {
 					user_id: this.$store.state.auth.user.id,
@@ -232,9 +254,11 @@
 			}
 		},
 		mounted() {
-			const {user} = this.$route.query;
+			const { user } = this.$route.query;
 			if (user) {
+				console.log('route ', user)
 				this.connectSocket();
+				this.getUserMessages(user);
 			}
 			// const UserOptions = {
 			// 	id: store.state.auth.user.id
@@ -248,7 +272,7 @@
 			// });
 		},
 		watch: {
-			async '$route' (to, from) {
+			async '$route' (to, from) { // undefined or number
 				if (to.query.user) {
 					this.updatePrivateMessages([]);
 					this.mode = true;
@@ -272,6 +296,7 @@
 
 						}
 					});
+					this.getMessages(to.query.user);
 				}
 			}
 		}
