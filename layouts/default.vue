@@ -164,16 +164,16 @@
 			userInfo() {
 				return this.$store.state.userInfo;
 			}
-		},
-		mounted() {
-			const {message} = this.$route.query;
-			if (message === 'noUser') {
-				this.message = 'Fill the data please';
-			} else if (message === 'userLeft') {
-				this.message = 'You have left the chat';
-			}
-			this.snackbar = !!this.message;
 		}
+		// mounted() {
+		// 	const {message} = this.$route.query;
+		// 	if (message === 'noUser') {
+		// 		this.message = 'Fill the data please';
+		// 	} else if (message === 'userLeft') {
+		// 		this.message = 'You have left the chat';
+		// 	}
+		// 	this.snackbar = !!this.message;
+		// }
 	}
 </script>
 

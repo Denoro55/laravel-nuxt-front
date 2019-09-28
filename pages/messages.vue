@@ -194,7 +194,6 @@
 		methods: {
 			...mapMutations(['updatePrivateMessages']),
 			async getMessages(queryUser) {
-				console.log('query user: ', queryUser);
 				const options = {
 					user_id: this.$store.state.auth.user.id
 				};
