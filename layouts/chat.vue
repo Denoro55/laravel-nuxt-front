@@ -114,10 +114,6 @@
 </script>
 
 <style lang="scss">
-	.content {
-		padding-top: 12px;
-	}
-
 	.chat-user {
 		&__image {
 			width: 40px;
