@@ -7,9 +7,9 @@ export default function({$axios, store}) {
 			console.log('Error 401');
 			// console.log('error 401 catch')
 		} else {
+			console.log('Error');
 			return Promise.reject(error);
 		}
-		return Promise.reject(error);
 	});
 
 	$axios.onRequest((config ) => {
