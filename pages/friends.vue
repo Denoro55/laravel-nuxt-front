@@ -120,11 +120,8 @@
 				} else {
 					return '/default_bg.png';
 				}
-			}
-		},
-		computed: {
+			},
 			getUserImage(url) {
-				console.log('computed ', url);
 				if (url) {
 					return {
 						backgroundImage: `url(/img/${url})`
