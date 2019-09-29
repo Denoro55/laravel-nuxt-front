@@ -19,7 +19,7 @@
 				fixed
 				app
 		>
-			<!--<UserPanel :name="user.name" :likes="userInfo.likes" />-->
+			<UserPanel :name="user.name" :likes="userInfo.likes" />
 			<!--<img :src="`/img/${user.image_url}`" alt="">-->
 			<!--<img :src="require('~/assets/v.png')" alt="">-->
 			<!--<img :src="require(`@/assets/v.png`)" alt="">-->
