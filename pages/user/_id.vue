@@ -233,7 +233,7 @@
 					}
 				} else {
 					return {
-						backgroundImage: `url(default_user_avatar.png)`
+						backgroundImage: `url(/default_user_avatar.png)`
 					}
 				}
 			}

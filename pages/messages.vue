@@ -241,7 +241,7 @@
 				if (url) {
 					return `/img/${url}`;
 				} else {
-					return '/default_bg.png';
+					return '/default_user_avatar.png';
 				}
 			},
 			connectSocket() {
