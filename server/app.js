@@ -119,6 +119,7 @@ io.on('connection', socket => {
 			users.remove(socket.id);
 			users.add({
 				id: socket.id,
+				real_id: data.real_id,
 				name: user_name,
 				room: ROOM,
 				image_url: data.image_url

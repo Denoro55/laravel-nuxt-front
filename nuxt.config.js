@@ -1,4 +1,7 @@
-const colors = require('vuetify/es5/util/colors').default
+const colors = require('vuetify/es5/util/colors').default;
+const SITE_IP = 'http://188.225.75.245';
+// const SITE_IP = 'http://laravel-auth/';
+
 module.exports = {
     mode: 'universal',
     /*
@@ -44,7 +47,7 @@ module.exports = {
         '@nuxtjs/auth'
     ],
     axios: {
-        baseURL: 'http://188.225.75.245/api'
+        baseURL: SITE_IP + '/api'
     },
 	router: {
     	middleware: [
@@ -57,13 +60,13 @@ module.exports = {
 			local: {
 				endpoints: {
 					login: {
-						url: 'http://188.225.75.245/api/auth/login', method: "post", propertyName: 'token'
+						url: SITE_IP + '/api/auth/login', method: "post", propertyName: 'token'
 					},
 					user: {
-						url: 'http://188.225.75.245/api/me', method: "get", propertyName: 'data'
+						url: SITE_IP + '/api/me', method: "get", propertyName: 'data'
 					},
 					logout: {
-						url: 'http://188.225.75.245/api/auth/logout', method: "get"
+						url: SITE_IP + '/api/auth/logout', method: "get"
 					}
 				}
 			}

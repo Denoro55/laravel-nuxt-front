@@ -30,7 +30,7 @@
 							<!--<v-icon :color="chatUser.id === item.id ? 'green' : 'red'">mdi-account-circle</v-icon>-->
 						</v-list-item-action>
 						<v-list-item-content>
-							<v-list-item-title v-text="item.name"/>
+							<v-btn text v-bind="{ to: item.real_id ? `/user/${item.real_id}` : null }" v-text="item.name"></v-btn>
 						</v-list-item-content>
 					</v-list-item>
 				</v-list>
@@ -55,11 +55,11 @@
 				<v-icon>mdi-application</v-icon>
 			</v-btn>
 
-			<v-toolbar-title class="px-3" v-text="title"/>
-			<v-btn class="ml-4" to="/dashboard">Dashboard</v-btn>
-			<v-btn class="ml-4 info" to="/vuex">Vuex</v-btn>
-			<v-btn class="ml-4 info" to="/user/2">User 2</v-btn>
-			<v-btn class="ml-4 info" to="/user/3">User 3</v-btn>
+			<v-toolbar-title class="px-3" v-text="user.name"/>
+			<!--<v-btn class="ml-4" to="/dashboard">Dashboard</v-btn>-->
+			<!--<v-btn class="ml-4 info" to="/vuex">Vuex</v-btn>-->
+			<!--<v-btn class="ml-4 info" to="/user/2">User 2</v-btn>-->
+			<!--<v-btn class="ml-4 info" to="/user/3">User 3</v-btn>-->
 			<v-spacer/>
 			<template v-if="authenticated">
 				<v-btn class="error ml-3" @click.prevent="logout">Logout</v-btn>
@@ -93,8 +93,7 @@
 				fixed: false,
 				miniVariant: false,
 				right: true,
-				rightDrawer: false,
-				title: 'Denis'
+				rightDrawer: false
 			}
 		},
 		computed: mapState(['chatUser', 'users']),
@@ -152,6 +151,11 @@
 
 		.v-list-item__action {
 			margin: 8px 0;
+		}
+		
+		.v-list-item__content .v-btn {
+			text-transform: none;
+			justify-content: flex-start;
 		}
 	}
 </style>

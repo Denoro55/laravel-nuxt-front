@@ -110,6 +110,7 @@
 				})
 			},
 			getUserImage(item) {
+				console.log(item)
 				if (item.image_url !== undefined) {
 					if (item.image_url) {
 						return 'img/' + item.image_url;

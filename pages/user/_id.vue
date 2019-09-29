@@ -114,7 +114,7 @@
 
 <script>
 	export default {
-		middleware: 'userPage',
+		middleware: ['userPage', 'auth'],
 		async asyncData ({ $axios, store, params }) {
 			// this.$store.state.auth.user.id
 			const options = {

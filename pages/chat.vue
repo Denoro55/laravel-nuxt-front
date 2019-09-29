@@ -23,6 +23,7 @@
 			title: "Страница чата"
 		},
 		data: () => ({
+			test: 0,
 			room_id: '12',
 			valid: false,
 			idRules: [
@@ -31,10 +32,10 @@
 		}),
 		sockets: {
 			connect: function () {
-				console.log('socket connected')
+				// console.log('socket connected')
 			},
 			customEmit: function (data) {
-				console.log('this method was fired by the socket server. eg: io.emit("customEmit", data)')
+				// console.log('this method was fired by the socket server. eg: io.emit("customEmit", data)')
 			}
 		},
 		methods: {
@@ -49,7 +50,8 @@
 					room: this.room_id,
 					name: this.$store.state.auth.user.name ? this.$store.state.auth.user.name : 'Guest',
 					image_url: this.getUserImage(this.$store.state.auth.user),
-					id: this.$store.state.chatUser.id
+					id: this.$store.state.chatUser.id,
+					real_id: this.$store.state.auth.user.id ? this.$store.state.auth.user.id : 0
 				};
 				this.$socket.emit('joinedUser', chatUser, data => {
 					if (typeof data === 'string') {
@@ -78,7 +80,7 @@
 			}
 		},
 		mounted() {
-			console.log(this.$store.$axios);
+			// console.log(this.$store.$axios);
 		}
 	}
 </script>

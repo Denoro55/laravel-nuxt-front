@@ -38,7 +38,7 @@
 		},
 		computed: {
 			getUserImage() {
-				return this.$store.state.auth.user ? 'img/' + this.$store.state.auth.user.image_url : 'default_avatar.png';
+				return this.$store.state.auth.user ? '/img/' + this.$store.state.auth.user.image_url : '/default_avatar.png';
 			},
 			isAuthorized() {
 				return !!this.$store.state.auth.user;
