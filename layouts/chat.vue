@@ -25,7 +25,7 @@
 							exact
 					>
 						<v-list-item-action class="mr-4">
-							<div class="chat-user__image" :style="`backgroundImage: url(${item.image_url})`">
+							<div class="chat-user__image" :style="getUserImage(item.image_url)">
 							</div>
 							<!--<v-icon :color="chatUser.id === item.id ? 'green' : 'red'">mdi-account-circle</v-icon>-->
 						</v-list-item-action>
@@ -107,6 +107,17 @@
 					this.$router.push('/?message=userLeft');
 					this.clearData();
 				});
+			},
+			getUserImage(url) {
+				if (url) {
+					return {
+						backgroundImage: `url(/img/${url})`
+					}
+				} else {
+					return {
+						backgroundImage: `url(default_user_avatar.png)`
+					}
+				}
 			}
 		}
 	}

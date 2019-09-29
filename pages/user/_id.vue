@@ -3,7 +3,7 @@
 		<div class="section mb-7">
 			<div class="another-user__main d-flex align-center">
 				<div class="another-user__logo"
-				     :style="{backgroundImage: `url(/img/${another_user.image_url})` }"
+				     :style="getUserImage(another_user.image_url)"
 				></div>
 				<div class="another-user__info ml-5">
 					<div class="another-user__name mb-2">{{another_user.name}}</div>
@@ -225,6 +225,17 @@
 			},
 			isPostLiked(id) {
 				return id !== 0;
+			},
+			getUserImage(url) {
+				if (url) {
+					return {
+						backgroundImage: `url(/img/${url})`
+					}
+				} else {
+					return {
+						backgroundImage: `url(default_user_avatar.png)`
+					}
+				}
 			}
 		},
 		mounted() {

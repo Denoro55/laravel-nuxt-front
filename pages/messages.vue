@@ -239,13 +239,9 @@
 			},
 			getUserImage(url) {
 				if (url) {
-					return {
-						backgroundImage: `url(/img/${url})`
-					}
+					return `/img/${url}`;
 				} else {
-					return {
-						backgroundImage: `url(default_user_avatar.png)`
-					}
+					return '/default_bg.png';
 				}
 			},
 			connectSocket() {
