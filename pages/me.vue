@@ -137,7 +137,7 @@
 						e.commentsLoaded = false;
 						e.comments = []
 					});
-					console.log(data);
+					// console.log(data);
 					return { articles: data }
 				})
 		},
@@ -166,7 +166,7 @@
 		methods: {
 			reset() {
 				this.$refs.form.reset();
-				console.log(this.$refs);
+				// console.log(this.$refs);
 			},
 			hide() {
 				this.buttonText = this.buttonText === 'hide' ? 'show' : 'hide';
@@ -210,7 +210,7 @@
 					user_id: this.$store.state.auth.user.id,
 					type: type
 				};
-				console.log(article);
+				// console.log(article);
 				await this.$axios.$post('articles/like', form);
 			},
 			async showComment(article) {

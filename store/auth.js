@@ -9,8 +9,11 @@ export const getters = {
 
 export const mutations = {
 	updateImage(state, data) {
-		// console.log(state.user)
-		state.user.image_url = data;
+		if (data.type == 1) {
+			state.user.image_url = data.file;
+		} else {
+			state.user.bg_url = data.file;
+		}
 	},
 };
 

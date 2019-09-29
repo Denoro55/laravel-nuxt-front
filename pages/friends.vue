@@ -10,13 +10,13 @@
 					<div v-for="item in friendList" class="friends__item friend">
 						<v-card width="260">
 							<v-list-item class="py-3">
-								<div class="friend__avatar mr-3" :style="{backgroundImage: `url(img/${item.image_url})`}">
+								<div class="friend__avatar mr-3" :style="{backgroundImage: `url(/img/${item.image_url})`}">
 								</div>
 								<v-list-item-content class="py-0">
 									<v-list-item-title class="subtitle-2">{{item.name}}</v-list-item-title>
 								</v-list-item-content>
 							</v-list-item>
-							<v-img :src="`img/${item.image_url}`"
+							<v-img :src="getUserBG(item.bg_url)"
 									height="164"
 							></v-img>
 
@@ -42,7 +42,7 @@
 									<v-list-item-title class="subtitle-2">{{item.name}}</v-list-item-title>
 								</v-list-item-content>
 							</v-list-item>
-							<v-img :src="`img/${item.image_url}`"
+							<v-img :src="getUserBG(item.bg_url)"
 							       height="164"
 							></v-img>
 							<!--<v-card-text>-->
@@ -113,6 +113,13 @@
 					this.friendRequests.splice(this.friendRequests.indexOf(index), 1);
 					this.friendList.push(friend);
 				}
+			},
+			getUserBG(url) {
+				if (url) {
+					return `/img/${url}`;
+				} else {
+					return '/default_bg.png';
+				}
 			}
 		},
 		created() {
@@ -142,8 +149,8 @@
 			width: 40px;
 			height: 40px;
 			border-radius: 50%;
-			background-size: cover;
-			background-position: center center;
+			background-size: cover !important;
+			background-position: center center !important;
 		}
 	}
 

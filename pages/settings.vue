@@ -2,7 +2,7 @@
 	<div class="content">
 		<div class="settings">
 			<div class="settings__section">
-				<div class="settings__title mb-6 title">Change your avatar</div>
+				<div class="settings__title mb-6 title">Change your avatar or background</div>
 				<div class="setting-avatar">
 					<div class="setting-avatar__preview"
 					     :style="{backgroundImage: `url(${avatarPreview})`}"
@@ -42,7 +42,11 @@
       </span>
 								</template>
 							</v-file-input>
-							<v-btn :disabled="!valid" @click="uploadImage" class="success">Update avatar</v-btn>
+							<div class="mb-5">
+								<v-btn @click="type = 1" :class="{primary: type === 1}">Avatar</v-btn>
+								<v-btn @click="type = 2" :class="{primary: type === 2}" class="ml-4">Background</v-btn>
+							</div>
+							<v-btn :disabled="!valid" @click="uploadImage" class="success">Update</v-btn>
 						</v-form>
 					</div>
 				</div>
@@ -59,6 +63,7 @@
 			valid: false,
 			file: '',
 			avatarPreview: '',
+			type: 1,
 			fileImage: [],
 			rules: [
 				value => !value || value.type === 'image/jpeg' || value.type === 'image/png' || 'Select only images please!',
@@ -88,6 +93,7 @@
 				// formData.append('file', this.fileImage[0]);
 				formData.append('file', this.fileImage);
 				formData.append('user_id', this.$store.state.auth.user.id);
+				formData.append('upload_type', this.type);
 				this.$axios.post('user/updateAvatar', formData, {headers: {
 						'Content-Type': 'multipart/form-data'
 					}} ).then(response => {

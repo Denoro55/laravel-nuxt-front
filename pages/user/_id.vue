@@ -121,7 +121,7 @@
 				user_id: params.id,
 				watcher_id: store.state.auth.user.id
 			};
-			console.log(options);
+			// console.log(options);
 			const user = await $axios.post('user', options);
 			let articles = user.data.articles;
 			articles.forEach(function(e){
@@ -129,7 +129,7 @@
 				e.commentsLoaded = false;
 				e.comments = []
 			});
-			console.log(user);
+			// console.log(user);
 			return {
 				articles: articles,
 				another_user: user.data.user[0],
@@ -148,11 +148,11 @@
 				if (!article.commentsLoaded) {
 					const form = { article_id: article.id };
 					const response = await this.$axios.$post('articles/comments', form);
-					console.log(response);
+					// console.log(response);
 					article.commentsLoaded = true;
 					article.comments = response;
 				}
-				console.log(article);
+				// console.log(article);
 				article.showComment = !article.showComment;
 			},
 			async sendComment(article, event) {
@@ -187,7 +187,7 @@
 					user_id: this.$store.state.auth.user.id,
 					type: type
 				};
-				console.log(article);
+				// console.log(article);
 				await this.$axios.$post('articles/like', form);
 			},
 			likeAvatar() {

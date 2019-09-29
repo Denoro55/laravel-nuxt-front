@@ -158,7 +158,7 @@
 	export default {
 		middleware: 'auth',
 		async asyncData({ route, $axios, store }) {
-			console.log(store)
+			// console.log(store)
 			const options = {
 				user_id: store.state.auth.user.id,
 				companion_id: route.query.user
@@ -181,7 +181,7 @@
 		},
 		sockets: {
 			connect: function () {
-				console.log('socket connected')
+				// console.log('socket connected')
 			}
 		},
 		data: () => ({
@@ -255,7 +255,7 @@
 		mounted() {
 			const { user } = this.$route.query;
 			if (user) {
-				console.log('route ', user)
+				// console.log('route ', user)
 				this.connectSocket();
 				this.getUserMessages(user);
 			}

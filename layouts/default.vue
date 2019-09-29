@@ -18,6 +18,7 @@
 				:clipped="clipped"
 				fixed
 				app
+				:style="{backgroundImage: `url(/img/${user.bg_url}), url(default_bg.png)` }"
 		>
 			<UserPanel :name="user.name" :likes="userInfo.likes" />
 			<!--<img :src="`/img/${user.image_url}`" alt="">-->
@@ -402,6 +403,25 @@
 
 	img {
 		max-width: 100%;
+	}
+
+	.v-navigation-drawer {
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-position: center;
+
+		&:before {
+			content: '';
+			display: block;
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			background: rgba(black, .7);
+		}
+
+		.v-navigation-drawer__content {
+			position: relative;
+		}
 	}
 
 	::-webkit-scrollbar {width: 12px;height: 12px;}
