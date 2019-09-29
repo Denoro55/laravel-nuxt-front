@@ -2,7 +2,7 @@
 	<div class="avatar">
 		<div class="avatar__top mb-8">
 			<div class="avatar__image"
-			     :style="{backgroundImage: `url(${ getUserImage }), url(default_user_avatar.png)` }" >
+			     :style="{backgroundImage: `url(${ getUserImage })`}" >
 				<div class="avatar__likes d-flex justify-center">
 					<div v-if="isAuthorized !== false" class="icon-text d-flex align-center">
 						<v-icon color="red">mdi-cards-heart</v-icon>
@@ -42,10 +42,10 @@
 					if (this.$store.state.auth.user.image_url) {
 						return '/img/' + this.$store.state.auth.user.image_url;
 					} else {
-						return '/default_avatar.png';
+						return '/default_user_avatar.png';
 					}
 				}
-				return '/default_avatar.png';
+				return '/default_user_avatar.png';
 			},
 			isAuthorized() {
 				return !!this.$store.state.auth.user;

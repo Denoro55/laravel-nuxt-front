@@ -26,7 +26,7 @@
 						></v-divider>
 						<v-list-item v-else :key="item.title" :to="`messages?user=${item.idd}`">
 							<v-list-item-avatar class="mr-4">
-								<v-img :src="`img/${item.image_url}`"></v-img>
+								<v-img :src="getUserImage(item.image_url)"></v-img>
 							</v-list-item-avatar>
 							<v-list-item-content>
 								<v-list-item-title v-html="item.name"></v-list-item-title>
@@ -53,7 +53,7 @@
 						></v-divider>
 						<v-list-item v-else :key="item.title">
 							<v-list-item-avatar class="mr-4">
-								<v-img :src="`img/${item.image_url}`"></v-img>
+								<v-img :src="getUserImage(item.image_url)"></v-img>
 							</v-list-item-avatar>
 							<v-list-item-content>
 								<v-list-item-title v-html="item.name"></v-list-item-title>
@@ -237,6 +237,17 @@
 					}
 				})
 			},
+			getUserImage(url) {
+				if (url) {
+					return {
+						backgroundImage: `url(/img/${url})`
+					}
+				} else {
+					return {
+						backgroundImage: `url(default_user_avatar.png)`
+					}
+				}
+			},
 			connectSocket() {
 				const UserOptions = {
 					id: this.$store.state.auth.user.id,
@@ -259,16 +270,6 @@
 				this.connectSocket();
 				this.getUserMessages(user);
 			}
-			// const UserOptions = {
-			// 	id: store.state.auth.user.id
-			// };
-			// this.$socket.emit('userPrivateLeft', UserOptions, data => {
-			// 	if (typeof data === 'string') {
-			// 		console.error(data);
-			// 	} else {
-			//
-			// 	}
-			// });
 		},
 		watch: {
 			async '$route' (to, from) { // undefined or number

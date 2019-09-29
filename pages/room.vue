@@ -117,7 +117,7 @@
 						return 'default_user_avatar.png';
 					}
 				} else if (item.name !== 'admin') {
-					return 'default_avatar.png';
+					return 'default_user_avatar.png';
 				}
 				return 'images/chat/admin.png';
 			}
