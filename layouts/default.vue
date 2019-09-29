@@ -19,7 +19,7 @@
 				fixed
 				app
 		>
-			<UserPanel :name="user.name" :likes="userInfo.likes" />
+			<!--<UserPanel :name="user.name" :likes="userInfo.likes" />-->
 			<!--<img :src="`/img/${user.image_url}`" alt="">-->
 			<!--<img :src="require('~/assets/v.png')" alt="">-->
 			<!--<img :src="require(`@/assets/v.png`)" alt="">-->
@@ -41,41 +41,41 @@
 				</v-list-item>
 			</v-list>
 		</v-navigation-drawer>
-		<v-app-bar class="px-3 pl-4"
-				:clipped-left="clipped"
-				fixed
-				app
-		>
-			<v-app-bar-nav-icon @click.stop="drawer = !drawer"/>
-			<v-btn
-					icon
-					@click.stop="miniVariant = !miniVariant"
-			>
-				<v-icon>mdi-{{ `chevron-${miniVariant ? 'right' : 'left'}` }}</v-icon>
-			</v-btn>
-			<v-btn
-					icon
-					@click.stop="clipped = !clipped"
-			>
-				<v-icon>mdi-application</v-icon>
-			</v-btn>
+		<!--<v-app-bar class="px-3 pl-4"-->
+				<!--:clipped-left="clipped"-->
+				<!--fixed-->
+				<!--app-->
+		<!--&gt;-->
+			<!--<v-app-bar-nav-icon @click.stop="drawer = !drawer"/>-->
+			<!--<v-btn-->
+					<!--icon-->
+					<!--@click.stop="miniVariant = !miniVariant"-->
+			<!--&gt;-->
+				<!--<v-icon>mdi-{{ `chevron-${miniVariant ? 'right' : 'left'}` }}</v-icon>-->
+			<!--</v-btn>-->
+			<!--<v-btn-->
+					<!--icon-->
+					<!--@click.stop="clipped = !clipped"-->
+			<!--&gt;-->
+				<!--<v-icon>mdi-application</v-icon>-->
+			<!--</v-btn>-->
 
-			<v-toolbar-title class="px-3" v-text="user.name"/>
-			<!--<v-btn class="ml-4" to="/dashboard">Dashboard</v-btn>-->
-			<!--<v-btn class="ml-4 info" to="/vuex">Vuex</v-btn>-->
-			<v-btn class="ml-4 info" to="/user/1">User 1</v-btn>
-			<v-btn class="ml-4 info" to="/user/2">User 2</v-btn>
-			<v-btn class="ml-4 info" to="/user/3">User 3</v-btn>
-			<v-spacer/>
-			<template v-if="authenticated">
-				<v-btn to="/settings"><v-icon>mdi-brightness-7</v-icon></v-btn>
-				<v-btn class="error ml-4" @click.prevent="logout">Logout</v-btn>
-			</template>
-			<template v-else>
-				<v-btn class="primary" to="/login">Login</v-btn>
-				<v-btn class="success ml-4" to="/register">Register</v-btn>
-			</template>
-		</v-app-bar>
+			<!--<v-toolbar-title class="px-3" v-text="user.name"/>-->
+			<!--&lt;!&ndash;<v-btn class="ml-4" to="/dashboard">Dashboard</v-btn>&ndash;&gt;-->
+			<!--&lt;!&ndash;<v-btn class="ml-4 info" to="/vuex">Vuex</v-btn>&ndash;&gt;-->
+			<!--<v-btn class="ml-4 info" to="/user/1">User 1</v-btn>-->
+			<!--<v-btn class="ml-4 info" to="/user/2">User 2</v-btn>-->
+			<!--<v-btn class="ml-4 info" to="/user/3">User 3</v-btn>-->
+			<!--<v-spacer/>-->
+			<!--<template v-if="authenticated">-->
+				<!--<v-btn to="/settings"><v-icon>mdi-brightness-7</v-icon></v-btn>-->
+				<!--<v-btn class="error ml-4" @click.prevent="logout">Logout</v-btn>-->
+			<!--</template>-->
+			<!--<template v-else>-->
+				<!--<v-btn class="primary" to="/login">Login</v-btn>-->
+				<!--<v-btn class="success ml-4" to="/register">Register</v-btn>-->
+			<!--</template>-->
+		<!--</v-app-bar>-->
 		<v-content>
 			<v-container class="pl-7 pr-7 pb-7">
 				<nuxt/>
