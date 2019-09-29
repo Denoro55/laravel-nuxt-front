@@ -10,7 +10,7 @@
 					<div v-for="item in friendList" class="friends__item friend">
 						<v-card width="260">
 							<v-list-item class="py-3">
-								<div class="friend__avatar mr-3" :style="{backgroundImage: `url(/img/${item.image_url})`}">
+								<div class="friend__avatar mr-3" :style="getUserImage(item.image_url)">
 								</div>
 								<v-list-item-content class="py-0">
 									<v-list-item-title class="subtitle-2">{{item.name}}</v-list-item-title>
@@ -36,7 +36,7 @@
 					<div v-for="(item, index) in friendRequests" class="friends__item friend">
 						<v-card width="260">
 							<v-list-item class="py-3">
-								<div class="friend__avatar mr-3" :style="{background: `url(img/${item.image_url})`}">
+								<div class="friend__avatar mr-3" :style="getUserImage(item.image_url)">
 								</div>
 								<v-list-item-content class="py-0">
 									<v-list-item-title class="subtitle-2">{{item.name}}</v-list-item-title>
@@ -119,6 +119,19 @@
 					return `/img/${url}`;
 				} else {
 					return '/default_bg.png';
+				}
+			}
+		},
+		computed: {
+			getUserImage(url) {
+				if (url) {
+					return {
+						backgroundImage: `url(/img/${url})`
+					}
+				} else {
+					return {
+						backgroundImage: `url(default_user_avatar.png)`
+					}
 				}
 			}
 		},

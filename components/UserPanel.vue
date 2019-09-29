@@ -38,7 +38,14 @@
 		},
 		computed: {
 			getUserImage() {
-				return this.$store.state.auth.user ? '/img/' + this.$store.state.auth.user.image_url : '/default_avatar.png';
+				if (this.$store.state.auth.user) {
+					if (this.$store.state.auth.user.image_url) {
+						return '/img/' + this.$store.state.auth.user.image_url;
+					} else {
+						return '/default_avatar.png';
+					}
+				}
+				return '/default_avatar.png';
 			},
 			isAuthorized() {
 				return !!this.$store.state.auth.user;
