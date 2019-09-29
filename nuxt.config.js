@@ -44,7 +44,7 @@ module.exports = {
         '@nuxtjs/auth'
     ],
     axios: {
-        baseURL: 'http://laravel-auth/api'
+        baseURL: 'http://188.225.75.245/api'
     },
 	router: {
     	middleware: [
@@ -57,13 +57,13 @@ module.exports = {
 			local: {
 				endpoints: {
 					login: {
-						url: 'http://laravel-auth/api/auth/login', method: "post", propertyName: 'token'
+						url: 'http://188.225.75.245/api/auth/login', method: "post", propertyName: 'token'
 					},
 					user: {
-						url: 'http://laravel-auth/api/me', method: "get", propertyName: 'data'
+						url: 'http://188.225.75.245/api/me', method: "get", propertyName: 'data'
 					},
 					logout: {
-						url: 'http://laravel-auth/api/auth/logout', method: "get"
+						url: 'http://188.225.75.245/api/auth/logout', method: "get"
 					}
 				}
 			}
