@@ -157,26 +157,35 @@
 	import {mapMutations, mapState} from 'vuex';
 	export default {
 		middleware: 'auth',
-		async asyncData({ route, $axios, store }) {
-			// console.log(store)
+		async asyncData({ route, $axios, store, redirect }) {
 			const options = {
 				user_id: store.state.auth.user.id,
 				companion_id: route.query.user
 			};
 			if (route.query.user) {
-				const messages = await $axios.$post('message/getUserMessages', options);
-				return {
-					mode: true,
-					companionID: route.query.user,
-					messages: [],
-					companionMessages: messages
+				let query = +route.query.user; // 2 for example
+				if (Number.isInteger(query) && query !== store.state.auth.user.id) {
+					const response = await $axios.$post('message/getUserMessages', options);
+					if (!response.success) {
+						redirect('/messages');
+						return;
+					}
+					store.commit('updatePrivateMessages',response.messages);
+					return {
+						mode: true,
+						companionID: route.query.user,
+						messages: []
+					}
+				} else { // invalid GET param
+					redirect('/messages');
 				}
-			}
-			const messages = await $axios.$post('message/getMessages', options);
-			return {
-				mode: false,
-				messages: messages,
-				companionMessages: []
+			} else {
+				const messages = await $axios.$post('message/getMessages', options);
+				return {
+					mode: false,
+					messages: messages,
+					companionMessages: []
+				}
 			}
 		},
 		sockets: {
@@ -193,6 +202,10 @@
 		computed: mapState(['privateMessages']),
 		methods: {
 			...mapMutations(['updatePrivateMessages']),
+			isRouteValid(q) {
+				let query = +q; // 2 for example
+				return Number.isInteger(query) && query !== this.$store.state.auth.user.id;
+			},
 			async getMessages(queryUser) {
 				const options = {
 					user_id: this.$store.state.auth.user.id
@@ -202,16 +215,21 @@
 				this.companionMessages = [];
 			},
 			async getUserMessages(queryUser) {
+				this.mode = true;
+				this.companionID = queryUser;
+				this.messages = [];
 				this.updatePrivateMessages([]);
 				const options = {
 					user_id: this.$store.state.auth.user.id,
 					companion_id: queryUser
 				};
 				const messages = await this.$axios.$post('message/getUserMessages', options);
-				this.mode = true;
-				this.companionID = queryUser;
-				this.messages = [];
-				this.updatePrivateMessages(messages);
+				if (messages.success) {
+					this.updatePrivateMessages(messages);
+					this.connectSocket();
+				} else {
+					// this.$router.push('/messages');
+				}
 			},
 			async sendMessage() {
 				const options = {
@@ -260,26 +278,35 @@
 			}
 		},
 		mounted() {
-			const { user } = this.$route.query;
-			if (user) {
-				// console.log('route ', user)
-				this.connectSocket();
-				this.getUserMessages(user);
-			}
+			// console.log(this.$store);
+			// const { user } = this.$route.query;
+			// if (user) {
+			// 	// console.log('route ', user)
+			// 	this.connectSocket();
+			// 	this.getUserMessages(user);
+			// }
 		},
 		watch: {
 			async '$route' (to, from) { // undefined or number
 				if (to.query.user) {
-					this.updatePrivateMessages([]);
-					this.mode = true;
-					this.companionID = to.query.user;
-					const options = {
-						user_id: this.$store.state.auth.user.id,
-						companion_id: this.companionID
-					};
-					const messages = await this.$axios.$post('message/getUserMessages', options);
-					this.updatePrivateMessages(messages);
-					this.connectSocket();
+					if (!this.isRouteValid(to.query.user)) {
+						this.$router.push('/messages');
+					} else {
+						this.updatePrivateMessages([]);
+						this.mode = true;
+						this.companionID = to.query.user;
+						const options = {
+							user_id: this.$store.state.auth.user.id,
+							companion_id: this.companionID
+						};
+						const response = await this.$axios.$post('message/getUserMessages', options);
+						if (response.success) {
+							this.updatePrivateMessages(response.messages);
+							this.connectSocket();
+						} else {
+							// this.$router.push('/messages');
+						}
+					}
 				} else {
 					this.mode = false;
 					const UserOptions = {

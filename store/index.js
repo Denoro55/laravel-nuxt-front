@@ -20,6 +20,7 @@ export const mutations = {
 		state.users = [];
 	},
 	updatePrivateMessages(state, msg) {
+		console.log('nmutation private' , msg)
 		state.privateMessages = msg;
 	},
 	SOCKET_newMessage(state, msg) {

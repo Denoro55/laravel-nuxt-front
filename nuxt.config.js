@@ -1,6 +1,6 @@
 const colors = require('vuetify/es5/util/colors').default;
 const SITE_IP = 'http://188.225.75.245';
-// const SITE_IP = 'http://laravel-auth/';
+// const SITE_IP = 'http://laravel-auth';
 
 module.exports = {
     mode: 'universal',
