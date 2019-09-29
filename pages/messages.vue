@@ -282,7 +282,7 @@
 			// const { user } = this.$route.query;
 			// if (user) {
 			// 	// console.log('route ', user)
-			// 	this.connectSocket();
+				this.connectSocket();
 			// 	this.getUserMessages(user);
 			// }
 		},
