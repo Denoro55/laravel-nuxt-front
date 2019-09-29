@@ -91,7 +91,7 @@
 				this.$axios.post('user/updateAvatar', formData, {headers: {
 						'Content-Type': 'multipart/form-data'
 					}} ).then(response => {
-						console.log(response.data)
+						// console.log(response.data)
 					// this.$store.state.auth.user.image_url = response.data;
 					this.$refs.form.reset();
 					this.$store.commit('auth/updateImage', response.data);

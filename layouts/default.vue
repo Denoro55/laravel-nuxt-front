@@ -63,9 +63,9 @@
 			<v-toolbar-title class="px-3" v-text="user.name"/>
 			<!--<v-btn class="ml-4" to="/dashboard">Dashboard</v-btn>-->
 			<!--<v-btn class="ml-4 info" to="/vuex">Vuex</v-btn>-->
-			<v-btn class="ml-4 info" to="/user/1">User 1</v-btn>
-			<v-btn class="ml-4 info" to="/user/2">User 2</v-btn>
-			<v-btn class="ml-4 info" to="/user/3">User 3</v-btn>
+			<!--<v-btn class="ml-4 info" to="/user/1">User 1</v-btn>-->
+			<!--<v-btn class="ml-4 info" to="/user/2">User 2</v-btn>-->
+			<!--<v-btn class="ml-4 info" to="/user/3">User 3</v-btn>-->
 			<v-spacer/>
 			<template v-if="authenticated">
 				<v-btn to="/settings"><v-icon>mdi-brightness-7</v-icon></v-btn>

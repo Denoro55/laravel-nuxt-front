@@ -24,7 +24,7 @@
 			VuetifyLogo
 		},
 		mounted() {
-			console.log(this);
+			// console.log(this);
 		}
 	}
 </script>

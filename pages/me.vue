@@ -243,7 +243,7 @@
 			}
 		},
 		mounted() {
-			console.log(this.$store.state.auth.user.id);
+			// console.log(this.$store.state.auth.user.id);
 		}
 	}
 </script>
