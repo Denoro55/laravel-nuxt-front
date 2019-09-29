@@ -76,13 +76,13 @@
 		middleware: 'guest',
         data: () => ({
             valid: true,
-            name: 'den55',
+            name: '',
             nameRules: [
                 v => !!v || 'Name is required',
 				v => (v && v.length > 2) || 'Name must be more than 2 characters',
                 v => (v && v.length <= 10) || 'Name must be less than 10 characters',
             ],
-            email: 'den@mail.ru',
+            email: '',
             emailRules: [
                 v => !!v || 'E-mail is required',
                 v => /.+@.+\..+/.test(v) || 'E-mail must be valid',
@@ -91,7 +91,7 @@
 				v => !!v || 'Password is required',
 				v => (v && v.length > 7) || 'Password must be more than 7 characters',
 			],
-            password: '12345678',
+            password: '',
             items: [
                 'Item 1',
                 'Item 2',

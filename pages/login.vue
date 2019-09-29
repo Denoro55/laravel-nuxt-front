@@ -61,13 +61,13 @@
 		middleware: 'guest',
 		data: () => ({
 			valid: true,
-			name: 'den55',
-			email: 'den@mail.ru',
+			// name: 'den55',
+			email: '',
 			emailRules: [
 				v => !!v || 'E-mail is required',
 				v => /.+@.+\..+/.test(v) || 'E-mail must be valid',
 			],
-			password: '12345678',
+			password: '',
 			passwordRules: [
 				v => !!v || 'Password is required',
 				v => (v && v.length > 7) || 'Password must be more than 7 characters',
