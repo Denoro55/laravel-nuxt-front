@@ -49,7 +49,7 @@
 				const chatUser = {
 					room: this.room_id,
 					name: this.$store.state.auth.user.name ? this.$store.state.auth.user.name : 'Guest',
-					image_url: this.getUserImage(this.$store.state.auth.user),
+					image_url: this.$store.state.auth.user.image_url,
 					id: this.$store.state.chatUser.id,
 					real_id: this.$store.state.auth.user.id ? this.$store.state.auth.user.id : 0
 				};
@@ -65,16 +65,16 @@
 			},
 			getUserImage(item) {
 				if (!item) {
-					return 'default_avatar.png';
+					return '/default_user_avatar.png';
 				}
 				if (item.image_url !== undefined) {
 					if (item.image_url) {
 						return 'img/' + item.image_url;
 					} else {
-						return 'default_user_avatar.png';
+						return '/default_user_avatar.png';
 					}
 				} else if (item.name !== 'admin') {
-					return 'default_avatar.png';
+					return '/default_user_avatar.png';
 				}
 				return 'images/chat/admin.png';
 			}
